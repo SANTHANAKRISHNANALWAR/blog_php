@@ -31,7 +31,7 @@ try {
                 <div class="container">
                     <a href="./profile.php" class="navbar-brand btn btn-success p-2 text-white">Home</a>
                     <div class="d-flex gap-2">
-                        <form class="d-flex" action="../controller/logout_file.php" method="POST">
+                        <form class="d-flex" action="../controller/logout.php" method="POST">
                             <button class="btn btn-outline-danger" type="submit">LOG OUT</button>
                         </form>
                     </div>
@@ -46,7 +46,7 @@ try {
                         <div class="displayBlock col">
                             <div class="display">
                                 <h2 class="text-center">POST GALLERY</h2>
-                                <a href="./edit.php" onclick="" class="btn btn-outline-primary px-4">Edit Post</a>
+                                <a href="../view/edit.php" onclick="" class="btn btn-outline-primary px-4">Edit Post</a>
                             </div>
                         </div>
                     </div>

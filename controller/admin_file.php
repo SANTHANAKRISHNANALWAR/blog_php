@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once "./error_handling.php";
+require_once "../controller/error_handling.php";
 
 try {
 
@@ -10,7 +10,7 @@ try {
         $adminid = htmlspecialchars(trim($_POST['adminid']));
         $adminpass = htmlspecialchars(trim($_POST['adminpass']));
 
-        require_once "./config.php";
+        require_once "../model/config.php";
 
         $admin_sql = "SELECT admin_pass, admin_name FROM admin_table WHERE admin_id = ?";
         $admin_stmt = $conn->prepare($admin_sql);
@@ -22,7 +22,7 @@ try {
             $_SESSION['adminid'] = $adminid;
             $admin_stmt->close();
             $conn->close();
-            header("location: ./admin_dashboard.php");
+            header("location: ../view/admin_dashboard.php");
             exit();
         } else {
             $admin_stmt->close();

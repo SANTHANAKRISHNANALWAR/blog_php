@@ -22,7 +22,7 @@ require_once "../controller/admin_dashboard_file.php";
             <div class="container">
                 <a href="./admin_dashboard.php" class="navbar-brand btn btn-success p-2 text-white">Admin Home</a>
                 <div class="d-flex gap-2">
-                    <form class="d-flex" action="./admin_logout.php" method="POST">
+                    <form class="d-flex" action="../controller/admin_logout.php" method="POST">
                         <button class="btn btn-outline-danger" type="submit">LOG OUT</button>
                     </form>
                 </div>

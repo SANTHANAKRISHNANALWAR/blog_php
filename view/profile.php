@@ -40,8 +40,8 @@ require_once "../controller/profile_file.php";
                             <div class="card-body">
                                 <h2 class="card-title">Publish your passions, your way</h2>
                                 <p class="card-text">Create a unique and beautiful blog easily.</p>
-                                <a href="./posting.php" class="btn btn-primary">ADD POST</a>
-                                <a href="./display.php" class="btn btn-primary">VIEW POSTS</a>
+                                <a href="../view/posting.php" class="btn btn-primary">ADD POST</a>
+                                <a href="../view/display.php" class="btn btn-primary">VIEW POSTS</a>
                             </div>
                         </div>
                     </div>

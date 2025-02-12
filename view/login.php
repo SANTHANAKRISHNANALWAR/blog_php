@@ -10,7 +10,7 @@
 
 <?php
 
-require_once "../controller/login_file.php";
+// require_once "../controller/login_file.php";
 
 ?>
 

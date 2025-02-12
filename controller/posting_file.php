@@ -21,14 +21,14 @@ try {
 
         if (isset($_FILES['post_image']) && $_FILES['post_image']['error'] == 0) {
             $files = $_FILES['post_image'];
-            $upload_dir = "uploads/";
+            $upload_dir = "../uploads/";
             $file_name = basename($files['name']);
             $target_file = $upload_dir . $file_name;
             $allowed_types = ['image/jpeg', 'image/png', 'image/gif'];
             if (in_array($files['type'], $allowed_types)) {
                 $encoded_image = base64_encode(file_get_contents($files["tmp_name"]));
-                if (!is_dir("uploads")) {
-                    mkdir("./uploads");
+                if (!is_dir("../uploads")) {
+                    mkdir("../blog_php/uploads");
                 }
                 $status = move_uploaded_file($files['tmp_name'], $target_file);
                 if ($status) {

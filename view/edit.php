@@ -32,7 +32,7 @@ try {
                 <div class="container">
                     <a href="./profile.php" class="navbar-brand btn btn-success p-2 text-white">Home</a>
                     <div class="d-flex gap-2">
-                        <form class="d-flex" action="../controller/logout_file.php" method="POST">
+                        <form class="d-flex" action="../controller/logout.php" method="POST">
                             <button class="btn btn-outline-danger" type="submit">LOG OUT</button>
                         </form>
                     </div>

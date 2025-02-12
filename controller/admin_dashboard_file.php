@@ -2,7 +2,7 @@
 
 session_start();
 
-require_once "./error_handling.php";
+require_once "../controller/error_handling.php";
 
 try {
     $admin_name = $_SESSION['admin_name'];

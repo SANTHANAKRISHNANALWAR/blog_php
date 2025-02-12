@@ -30,10 +30,13 @@ if ($server->REQUEST_METHOD == 'POST' && !empty($post->name) && !empty($post->pa
             header("location: ../view/profile.php");
             exit();
         } else {
-            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Entered password is wrong</strong> 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
+            // echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
+            // <strong>Entered password is wrong</strong> 
+            // <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            // </div>';
+
+            require_once "../view/password_wrong.php";
+            require_once "../view/login.php";
         }
     } else {
         // echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">

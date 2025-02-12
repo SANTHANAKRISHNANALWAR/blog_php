@@ -12,7 +12,7 @@
 
 <?php
 
-require_once "../controller/register_file.php";
+// require_once "../controller/register_file.php";
 
 ?>
 

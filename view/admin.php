@@ -10,7 +10,7 @@
 
 <?php
 
-require_once "../controller/admin_file.php";
+// require_once "../controller/admin_file.php";
 
 ?>
 
@@ -20,7 +20,7 @@ require_once "../controller/admin_file.php";
             <div class="loginContainer container">
                 <div class="loginBody row">
                     <div class="loginBlock col">
-                        <form class="row g-3 p-3 col-12 col-lg-6 mx-auto shadow-lg" action="./controller/admin_file.php" method="POST" id="loginForm">
+                        <form class="row g-3 p-3 col-12 col-lg-6 mx-auto shadow-lg" action="../controller/admin_file.php" method="POST" id="loginForm">
 
                             <div class="formHeading text-center">
                                 <h4 class="formheadingh4 fs-3">Admin Login
