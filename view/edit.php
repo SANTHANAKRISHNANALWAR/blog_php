@@ -13,11 +13,11 @@
 
 session_start();
 
-require_once "./error_handling.php";
+require_once "../controller/error_handling.php";
 
 try {
 
-    require_once "config.php";
+    require_once "../model/config.php";
 
     $db_sql = $conn->prepare("SELECT * FROM `" . $_SESSION['logged_table'] . "`");
     $db_sql->execute();
@@ -32,7 +32,7 @@ try {
                 <div class="container">
                     <a href="./profile.php" class="navbar-brand btn btn-success p-2 text-white">Home</a>
                     <div class="d-flex gap-2">
-                        <form class="d-flex" action="./logout.php" method="POST">
+                        <form class="d-flex" action="../controller/logout_file.php" method="POST">
                             <button class="btn btn-outline-danger" type="submit">LOG OUT</button>
                         </form>
                     </div>
@@ -94,11 +94,11 @@ try {
                                                 <td><?php echo htmlspecialchars($row->image_path) ?></td>
                                                 <td>
                                                     <div class="d-flex gap-2">
-                                                        <form action="./post_edit.php" method="POST">
+                                                        <form action="../view/post_edit.php" method="POST">
                                                             <input type="hidden" name="uid" value="<?php echo $_SESSION['uid'][$slno]; ?>">
                                                             <button type="submit" name="<?php echo $_SESSION['uid'][$slno] ?>" class="btn btn-outline-success editbtn"><i class="bi bi-pencil-square"></i></button>
                                                         </form>
-                                                        <form action="./delete_post.php" method="POST">
+                                                        <form action="../controller/delete_post.php" method="POST">
                                                             <input type="hidden" name="deluid" value="<?php echo $_SESSION['uid'][$slno]; ?>">
                                                             <button type="submit" onclick="return confirm('Are you sure you want to delete this post?')" name="<?php echo $_SESSION['uid'][$slno] ?>" class="btn btn-outline-danger"><i class="bi bi-trash"></i></button>
 

@@ -8,60 +8,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 </head>
 
-
 <?php
 
-session_start();
-
-require_once "./error_handling.php";
-
-try {
-
-$post = (object) $_POST;
-$server = (object) $_SERVER;
-
-if ($server->REQUEST_METHOD == 'POST' && !empty($post->name) && !empty($post->password)) {
-    $name = $post->name;
-    $pass = $post->password;
-
-
-    require_once "config.php";
-
-    $pass_stmt = $conn->prepare("SELECT email, username, password FROM blog_users WHERE email=?");
-    $pass_stmt->bind_param("s", $name);
-    $pass_stmt->execute();
-    $pass_stmt->bind_result($emailid, $logged_name, $hashed_password);
-    if ($pass_stmt->fetch()) {
-
-        if (!empty($hashed_password) && password_verify($pass, $hashed_password)) {
-            $_SESSION['logged_table'] = preg_replace('/[^a-zA-Z0-9_]/', '', $emailid);
-            $_SESSION['logged_name'] = $logged_name;
-            $pass_stmt->close();
-            $conn->close();
-            header("location: ./profile.php");
-            exit();
-        } else {
-            echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-            <strong>Entered password is wrong</strong> 
-            <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-            </div>';
-        }
-    } else {
-        echo '<div class="alert alert-warning alert-dismissible fade show" role="alert">
-        <strong>Entered Email ID is wrong or not Registered User</strong> 
-        <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
-        </div>';
-    }
-    $pass_stmt->close();
-    $conn->close();
-}
-}catch(Exception $e){
-    require_once "./error_card.php";
-    restore_error_handler();
-    exit();
-}
+require_once "../controller/login_file.php";
 
 ?>
+
 
 <body>
     <main>
@@ -69,7 +21,7 @@ if ($server->REQUEST_METHOD == 'POST' && !empty($post->name) && !empty($post->pa
             <div class="loginContainer container">
                 <div class="loginBody row">
                     <div class="loginBlock col">
-                        <form class="row g-3 p-3 col-12 col-lg-6 mx-auto shadow-lg" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="loginForm">
+                        <form class="row g-3 p-3 col-12 col-lg-6 mx-auto shadow-lg" action="../controller/login_file.php" method="POST" id="loginForm">
 
                             <div class="formHeading text-center">
                                 <h4 class="formheadingh4 fs-3">Enter Your Login credentials

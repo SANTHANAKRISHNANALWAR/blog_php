@@ -1,7 +1,7 @@
 <?php
     session_start();
     if($_SERVER['REQUEST_METHOD'] == 'POST' && $_POST['deluid']){
-    require_once "config.php";
+    require_once "../model/config.php";
     $uniqueid = $_POST['deluid'];
     $post_table = $_SESSION['logged_table'];
     $del_sql = "DELETE FROM `$post_table` WHERE id = ?";
@@ -10,12 +10,12 @@
     if($del_stmt->execute()){
         $del_stmt->close();
         $conn->close();
-        header('location: ./edit.php');
+        header('location: ../view/edit.php');
         exit();
     }
     else{
-        echo "error in deletion";
-        header('location: ./edit.php');
+        echo "<script>alert('error in deletion');</script>";
+        header('location: ../view/edit.php');
         exit();
     }
 }

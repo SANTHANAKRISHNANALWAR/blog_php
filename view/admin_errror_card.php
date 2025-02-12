@@ -3,7 +3,7 @@
         <div class="card shadow-lg">
             <div class="card-body">
                 <h5 class="card-title">⚠ Unauthorized entry.</h5>
-                <a href='admin.php' class='btn btn-danger'>Admin Home Page</a>
+                <a href='../view/admin.php' class='btn btn-danger'>Admin Home Page</a>
             </div>
         </div>
     </div>

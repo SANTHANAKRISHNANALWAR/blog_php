@@ -10,42 +10,7 @@
 
 <?php
 
-session_start();
-
-require_once "./error_handling.php";
-
-try {
-
-    if ($_SERVER['REQUEST_METHOD'] == 'POST' && isset($_POST['adminid'], $_POST['adminpass'])) {
-        $adminid = htmlspecialchars(trim($_POST['adminid']));
-        $adminpass = htmlspecialchars(trim($_POST['adminpass']));
-
-        require_once "./config.php";
-
-        $admin_sql = "SELECT admin_pass, admin_name FROM admin_table WHERE admin_id = ?";
-        $admin_stmt = $conn->prepare($admin_sql);
-        $admin_stmt->bind_param("s", $adminid);
-        $admin_stmt->execute();
-        $admin_stmt->bind_result($result_pass, $result_name);
-        if ($admin_stmt->fetch() && isset($adminpass) && password_verify($adminpass, $result_pass)) {
-            $_SESSION['admin_name'] = $result_name;
-            $_SESSION['adminid'] = $adminid;
-            $admin_stmt->close();
-            $conn->close();
-            header("location: ./admin_dashboard.php");
-            exit();
-        } else {
-            $admin_stmt->close();
-            $conn->close();
-            throw new Exception("Entered Credentials wrong!");
-        }
-    }
-} catch (Exception $e) {
-    echo "$e";
-    restore_error_handler();
-    exit();
-}
-
+require_once "../controller/admin_file.php";
 
 ?>
 
@@ -55,7 +20,7 @@ try {
             <div class="loginContainer container">
                 <div class="loginBody row">
                     <div class="loginBlock col">
-                        <form class="row g-3 p-3 col-12 col-lg-6 mx-auto shadow-lg" action="<?php echo $_SERVER['PHP_SELF']; ?>" method="POST" id="loginForm">
+                        <form class="row g-3 p-3 col-12 col-lg-6 mx-auto shadow-lg" action="./controller/admin_file.php" method="POST" id="loginForm">
 
                             <div class="formHeading text-center">
                                 <h4 class="formheadingh4 fs-3">Admin Login

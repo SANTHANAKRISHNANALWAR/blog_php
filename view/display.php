@@ -12,11 +12,11 @@
 
 session_start();
 
-require_once "./error_handling.php";
+require_once "../controller/error_handling.php";
 
 try {
 
-    require_once "config.php";
+    require_once "../model/config.php";
 
     $db_sql = $conn->prepare("SELECT * FROM `" . $_SESSION['logged_table'] . "`");
     $db_sql->execute();
@@ -31,7 +31,7 @@ try {
                 <div class="container">
                     <a href="./profile.php" class="navbar-brand btn btn-success p-2 text-white">Home</a>
                     <div class="d-flex gap-2">
-                        <form class="d-flex" action="./logout.php" method="POST">
+                        <form class="d-flex" action="../controller/logout_file.php" method="POST">
                             <button class="btn btn-outline-danger" type="submit">LOG OUT</button>
                         </form>
                     </div>
